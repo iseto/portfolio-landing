@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata = {
-  title: "Ignatius – Frontend Developer",
+  title: "Ignatius Seto – Frontend Developer",
   description:
     "Portfolio showcasing frontend projects and accessibility-first design.",
 };
