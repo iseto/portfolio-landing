@@ -6,6 +6,16 @@ const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
   // Override default ignores of eslint-config-next.
+  {
+    extends: [
+      "next/core-web-vitals",
+      "plugin:@typescript-eslint/recommended",
+      "prettier",
+    ],
+    rules: {
+      "@typescript-eslint/explicit-module-boundary-types": "off",
+    },
+  },
   globalIgnores([
     // Default ignores of eslint-config-next:
     ".next/**",
