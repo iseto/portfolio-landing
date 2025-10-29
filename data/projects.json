@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Dynamischer Template Editor",
+    "description": "Dynamic template editor built with React, TypeScript, and Vite.",
+    "url": "https://dynamischer-template-editor.vercel.app",
+    "repo": "https://github.com/iseto/dynamischer-template-editor"
+  },
+  {
+    "title": "Cineflix Web Component",
+    "description": "Movie finder web component built with StencilJS and TheMovieDB API.",
+    "url": "https://wc-cineflix.vercel.app",
+    "repo": "https://github.com/iseto/wc-cineflix"
+  },
+  {
+    "title": "React Weather App",
+    "description": "Weather app using OpenWeather API and React.",
+    "url": "https://iseto.github.io/react-weather-app",
+    "repo": "https://github.com/iseto/react-weather-app"
+  }
+]
