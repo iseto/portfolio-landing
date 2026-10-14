@@ -101,8 +101,8 @@ export default function PortfolioHome({ locale }: { locale: Locale }) {
         <div className="section-heading">
           <p className="eyebrow">
             {locale === "id"
-              ? "Template Editor / Rencana"
-              : "Template Editor / Roadmap"}
+              ? "Template Studio / Rencana"
+              : "Template Studio / Roadmap"}
           </p>
           <h2 id="roadmap-title">{t.roadmap}</h2>
           <p>{t.roadmapIntro}</p>

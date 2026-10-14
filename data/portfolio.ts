@@ -45,7 +45,7 @@ export const copy = {
     nowIntro: "A small, dated view of where my work is heading.",
     focus: "Current direction",
     focusText:
-      "Turn the Template Editor into a documented example of frontend engineering, accessibility, and useful AI.",
+      "Turn Template Studio into a documented example of frontend engineering, accessibility, and useful AI.",
     next: "Next evidence to publish",
     nextText:
       "A baseline case study and a manual accessibility report before starting the AI-assisted drafting experiment.",
@@ -120,7 +120,7 @@ export const copy = {
     nowIntro: "Ein datierter Einblick in meine nächsten Schritte.",
     focus: "Aktuelle Richtung",
     focusText:
-      "Den Template Editor zu einem dokumentierten Beispiel für Frontend-Entwicklung, Barrierefreiheit und sinnvolle KI weiterentwickeln.",
+      "Template Studio zu einem dokumentierten Beispiel für Frontend-Entwicklung, Barrierefreiheit und sinnvolle KI weiterentwickeln.",
     next: "Nächster Nachweis",
     nextText:
       "Eine Beschreibung des Ist-Zustands und ein manueller Barrierefreiheitsbericht, bevor das Experiment mit KI-Entwürfen beginnt.",
@@ -195,7 +195,7 @@ export const copy = {
     nowIntro: "Ringkasan bertanggal tentang arah pekerjaan saya.",
     focus: "Fokus saat ini",
     focusText:
-      "Mengembangkan Template Editor menjadi contoh terdokumentasi untuk frontend, aksesibilitas, dan AI yang bermanfaat.",
+      "Mengembangkan Template Studio menjadi contoh terdokumentasi untuk frontend, aksesibilitas, dan AI yang bermanfaat.",
     next: "Bukti berikutnya",
     nextText:
       "Studi kasus awal dan laporan aksesibilitas manual sebelum memulai eksperimen penyusunan draf dengan AI.",

@@ -1,6 +1,6 @@
 [
   {
-    "title": "Dynamischer Template Editor",
+    "title": "Template Studio",
     "description": "Dynamic template editor built with React, TypeScript, and Vite.",
     "url": "https://dynamischer-template-editor.vercel.app",
     "repo": "https://github.com/iseto/dynamischer-template-editor"
