@@ -1,27 +1,21 @@
-export default function Header() {
+import LanguageSwitch from "./LanguageSwitch";
+import { copy, pathFor, type Locale } from "@/data/portfolio";
+export default function Header({ locale }: { locale: Locale }) {
+  const t = copy[locale];
   return (
-    <header className="border-b bg-white">
-      <div className="max-w-5xl mx-auto flex items-center justify-between p-4">
-        <h1 className="text-2xl font-bold">Ignatius Seto</h1>
-        <nav className="flex gap-6 text-gray-700">
-          <a href="#projects" className="hover:text-blue-600">
-            Projects
-          </a>
-          <a
-            href="https://github.com/iseto"
-            target="_blank"
-            className="hover:text-blue-600"
-          >
-            GitHub
-          </a>
-          <a
-            href="https://www.linkedin.com/in/iseto"
-            target="_blank"
-            className="hover:text-blue-600"
-          >
-            LinkedIn
-          </a>
+    <header className="site-header">
+      <div className="shell header-inner">
+        <a className="wordmark" href={pathFor(locale)}>
+          Ignatius Seto<span aria-hidden="true">.</span>
+        </a>
+        <nav aria-label={t.navigation} className="main-nav">
+          {["projects", "now", "notes", "contact"].map((id, index) => (
+            <a key={id} href={`${pathFor(locale)}#${id}`}>
+              {t.nav[index]}
+            </a>
+          ))}
         </nav>
+        <LanguageSwitch locale={locale} />
       </div>
     </header>
   );

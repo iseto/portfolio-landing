@@ -1,31 +1,46 @@
-# Portfolio Landing Page
+# Ignatius Seto — living portfolio
 
-This repository contains my **frontend development portfolio landing page**, built with [Next.js](https://nextjs.org/), [TypeScript](https://www.typescriptlang.org/), and [TailwindCSS](https://tailwindcss.com/).
+Next.js, React and TypeScript portfolio with English (`/`), German (`/de`), and Bahasa Indonesia (`/id`) pages, localized case studies, a dated Now section, engineering notes, and a public Template Editor roadmap. Source and demo links remain in `data/projects.json`; localized copy and project context live in `data/portfolio.ts`.
 
-It serves as a central hub to showcase my projects and will be continuously updated as I add new work.
+## Local development
 
-**Live Deployment:** [here](https://portfolio-landing-gamma.vercel.app/)
+Use Node.js 22 or newer and npm (the CI lockfile is `package-lock.json`).
 
-[![Build Status](https://img.shields.io/github/actions/workflow/status/iseto/portfolio-landing/ci.yml?branch=main&label=build)](https://github.com/iseto/portfolio-landing/actions)
-[![Vercel](https://img.shields.io/badge/deployed%20on-Vercel-000000?logo=vercel&logoColor=white)](https://portfolio-landing-gamma.vercel.app/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+```sh
+npm ci
+npm run dev
+```
 
----
+## Verification
 
-## Features
+```sh
+npm run lint
+npm run type-check
+npm run build
+npx playwright install chromium
+npm test
+npm run check:links
+```
 
-- Next.js App Router with TypeScript strict mode
-- TailwindCSS for styling
-- Accessibility-first components
-- Config-driven project list (`data/projects.json`)
-- Deployed on Vercel with CI/CD
+Browser tests start the production server after building. They cover all three languages and all case studies on desktop and mobile Chromium: document language, canonical URL, single main/h1, automated accessibility rules, overflow, internal paths/anchors, locale switching, keyboard skip link and reduced motion. These checks are not a manual screen reader audit or a full accessibility conformance assessment. JSON/HTML reports and axe rule results are saved on every run, with traces/screenshots on failure. Reports include incomplete findings needing human review.
 
----
+CI runs lint, TypeScript, build and browser regression checks on main pushes, PRs, and weekly schedules. Dependabot proposes monthly npm and GitHub Actions updates; it does not merge them automatically. A separate Monday 07:00 UTC workflow checks external links, with bounded requests and a retry. Authentication/bot/rate-limit responses require manual review; other unsuccessful responses or repeated network failures fail the check. JSON reports are retained as workflow artifacts. Manual workflow dispatch is available. GitHub schedules become active on the default branch; notifications follow GitHub account settings.
 
-## Project Structure
+## Content maintenance
 
-- app/ # Next.js app router pages
-- components/ # Reusable UI components (Header, Footer, ProjectCard)
-- data/ # JSON project data
-- styles/ # Global styles (Tailwind)
-- public/ # Static assets (favicon, og images, screenshots)
+- Update project URLs in `data/projects.json` and localized descriptions in `data/portfolio.ts`.
+- Keep all three languages synchronized. Language links preserve the current case study.
+- Real screenshots in `public/screenshots/` show local development versions captured on 14 October 2026. The deployed app demos may differ. Recapture them after UI updates; do not imply the screenshots establish accessibility.
+- Change `reviewed` only after reviewing Now. Add dated note records separately when future notes are published; do not rewrite the historical first note date.
+- Keep planned features and unverified outcomes clearly labeled. Publish measured evidence after the work happens.
+- Check [the milestone plan](docs/MILESTONES.md) and use [the accessibility report template](docs/ACCESSIBILITY-REPORT.md) for the separate Template Editor project.
+
+The dead Blog link was removed from navigation; GitHub and LinkedIn remain. The external checker discovers links from rendered pages, including all locales and report links. Set `CHECK_BASE_URL=http://127.0.0.1:4174` to inspect a local production preview. No private email, résumé, production outcome, audit result or AI evaluation is invented. Deployment is not part of this local change.
+
+## Accessibility evidence and PWA
+
+`/accessibility`, `/de/accessibility`, and `/id/accessibility` explain automated coverage, the real workflow history, dated observations, outstanding manual review, and feedback channels. The downloadable report template records scope, revision, individual criteria/tasks, findings and retest evidence. No automated result is presented as certification.
+
+The portfolio has an install manifest and production-only service worker. Visited same-origin pages/assets are cached; uncached offline routes show a multilingual fallback. External demos are not cached. No automatic install prompt, notifications or background API work. Bump the service-worker cache version when changing offline behavior; new workers wait for old tabs to close. Browser installation availability depends on platform and HTTPS (localhost is supported).
+
+This change edits only the portfolio repository; linked app source repositories were inspected and screenshotted without modifying their source.
