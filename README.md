@@ -4,7 +4,7 @@ Next.js, React and TypeScript portfolio with English (`/`), German (`/de`), and 
 
 ## Local development
 
-Use Node.js 22 or newer and npm (the CI lockfile is `package-lock.json`).
+Use Node.js 22 or newer and npm. `package-lock.json` is the single dependency lockfile for local development, CI, and Vercel. `vercel.json` explicitly uses `npm ci` and `npm run build`; do not add competing package-manager lockfiles.
 
 ```sh
 npm ci

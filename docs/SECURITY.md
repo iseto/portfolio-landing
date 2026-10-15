@@ -58,8 +58,9 @@ identifiers or server database were added.
 ## Dependency checks
 
 Next.js and eslint-config-next were updated from 16.4.0 to 16.4.1 using npm;
-`package-lock.json` is the lockfile used by CI. The older pnpm lockfile is not used
-for this workflow.
+`package-lock.json` is the single lockfile used locally, in CI, and on Vercel.
+The stale pnpm lockfile was removed after Vercel selected it and rejected the
+16.4.1 dependency specifiers. `vercel.json` explicitly installs with `npm ci`.
 
 ```sh
 npm run security:audit       # production dependencies; also runs in CI
