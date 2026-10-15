@@ -46,7 +46,6 @@ export default function ProjectCard({
           href={pathFor(locale, `projects/${project.slug}`)}
         >
           {t.study}
-          <span aria-hidden="true"> ↗</span>
           <span className="sr-only">: {project.title}</span>
         </a>
         <div className="project-links">

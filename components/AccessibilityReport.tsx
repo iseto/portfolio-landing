@@ -4,7 +4,7 @@ export default function AccessibilityReport({ locale }: { locale: Locale }) {
   const t = accessibilityCopy[locale];
   return (
     <article className="shell case-study">
-      <a href={pathFor(locale)}>← {copy[locale].back}</a>
+      <a href={pathFor(locale)}>{copy[locale].back}</a>
       <header className="case-header">
         <h1>{t.title}</h1>
         <p className="hero-copy">{t.intro}</p>
@@ -25,6 +25,7 @@ export default function AccessibilityReport({ locale }: { locale: Locale }) {
       <section>
         <h2>{t.baseline}</h2>
         <p>{t.baselineText}</p>
+        <p>{t.securityVerification}</p>
       </section>
       <section className="evidence-box">
         <h2>{t.manual}</h2>

@@ -19,14 +19,14 @@ export default function CaseStudy({
   const detail = project[locale];
   return (
     <article className="shell case-study">
-      <a href={`${pathFor(locale)}#projects`}>← {t.back}</a>
+      <a href={`${pathFor(locale)}#projects`}>{t.back}</a>
       <header className="case-header">
         <p className="eyebrow">{t.status}</p>
         <h1>{project.title}</h1>
         <p className="hero-copy">{detail.description}</p>
         <div className="actions">
           <a className="button primary" href={project.url}>
-            {t.demo} ↗
+            {t.demo}
           </a>
           <a className="button" href={project.repo}>
             {project.slug === "weather"
@@ -35,8 +35,7 @@ export default function CaseStudy({
                 : locale === "id"
                   ? "Kode versi sebelumnya"
                   : "Earlier version source"
-              : t.source}{" "}
-            ↗
+              : t.source}
           </a>
         </div>
       </header>

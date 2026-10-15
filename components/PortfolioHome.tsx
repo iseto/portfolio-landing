@@ -1,3 +1,4 @@
+import { notesFor } from "@/data/notes";
 import { accessibilityCopy } from "@/data/accessibility";
 import ProjectCard from "./ProjectCard";
 import {
@@ -6,7 +7,6 @@ import {
   pathFor,
   portfolioProjects,
   reviewed,
-  notePublished,
   type Locale,
 } from "@/data/portfolio";
 export default function PortfolioHome({ locale }: { locale: Locale }) {
@@ -20,7 +20,6 @@ export default function PortfolioHome({ locale }: { locale: Locale }) {
         <div className="actions">
           <a className="button primary" href="#projects">
             {t.work}
-            <span aria-hidden="true"> ↘</span>
           </a>
           <a className="button" href="https://www.linkedin.com/in/iseto">
             {t.contact}
@@ -93,7 +92,6 @@ export default function PortfolioHome({ locale }: { locale: Locale }) {
           <p>{t.nextText}</p>
           <a href={pathFor(locale, "projects/template-editor")}>
             {t.study}
-            <span aria-hidden="true"> →</span>
           </a>
         </div>
       </section>
@@ -129,25 +127,25 @@ export default function PortfolioHome({ locale }: { locale: Locale }) {
           <p className="eyebrow">03 / {t.nav[2]}</p>
           <h2 id="notes-title">{t.notes}</h2>
         </div>
-        <article className="note">
-          <div>
-            <time dateTime={notePublished}>
-              {dateLabel(locale, notePublished)}
-            </time>
-            <p className="eyebrow">{t.noteType}</p>
-          </div>
-          <div>
-            <h3>{t.noteTitle}</h3>
-            <p>{t.noteText}</p>
-          </div>
-        </article>
+        {notesFor(locale).map((note) => (
+          <article className="note" key={note.date}>
+            <div>
+              <time dateTime={note.date}>{dateLabel(locale, note.date)}</time>
+              <p className="eyebrow">{note.type}</p>
+            </div>
+            <div>
+              <h3>{note.title}</h3>
+              <p>{note.text}</p>
+            </div>
+          </article>
+        ))}
       </section>
       <section className="section about">
         <h2>{t.about}</h2>
         <div>
           <p>{t.aboutText}</p>
           <a className="study-link" href={pathFor(locale, "accessibility")}>
-            {accessibilityCopy[locale].title} →
+            {accessibilityCopy[locale].title}
           </a>
         </div>
       </section>
@@ -164,10 +162,10 @@ export default function PortfolioHome({ locale }: { locale: Locale }) {
             className="button primary"
             href="https://www.linkedin.com/in/iseto"
           >
-            LinkedIn ↗
+            LinkedIn
           </a>
           <a className="button" href="https://github.com/iseto">
-            GitHub ↗
+            GitHub
           </a>
         </div>
       </section>

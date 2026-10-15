@@ -79,7 +79,6 @@ export const copy = {
     skip: "Skip to content",
     navigation: "Main navigation",
     language: "Language",
-    footer: "Built to evolve. Evidence added as the work develops.",
     back: "Back to selected work",
     context: "Project context",
     existing: "Existing implementation",
@@ -87,7 +86,7 @@ export const copy = {
     decisions: "Decisions to document",
     evidence: "Evidence and limitations",
     limitations:
-      "The project links and original technology descriptions are available below. No production outcomes, performance improvements, or completed accessibility audit are claimed on this page.",
+      "The project links and original technology descriptions are available at the top of this page. No production outcomes, performance improvements, or completed accessibility audit are claimed on this page.",
     audit: "Accessibility testing",
     auditText:
       "Status: not yet audited for this case study. The next report will record date, browser, assistive technology, tasks, findings, fixes, and remaining limitations.",
@@ -154,7 +153,6 @@ export const copy = {
     skip: "Zum Inhalt springen",
     navigation: "Hauptnavigation",
     language: "Sprache",
-    footer: "Wächst mit meiner Arbeit. Nachweise folgen mit der Entwicklung.",
     back: "Zurück zu den Projekten",
     context: "Projektkontext",
     existing: "Bestehende Umsetzung",
@@ -162,7 +160,7 @@ export const copy = {
     decisions: "Zu dokumentierende Entscheidungen",
     evidence: "Nachweise und Grenzen",
     limitations:
-      "Die Projektlinks und die ursprünglichen Technologiebeschreibungen stehen unten. Diese Seite behauptet keine Produktionsergebnisse, Leistungsverbesserungen oder abgeschlossenen Barrierefreiheitsaudits.",
+      "Die Projektlinks und die ursprünglichen Technologiebeschreibungen stehen oben auf dieser Seite. Diese Seite behauptet keine Produktionsergebnisse, Leistungsverbesserungen oder abgeschlossenen Barrierefreiheitsaudits.",
     audit: "Tests zur Barrierefreiheit",
     auditText:
       "Status: Für diese Projektbeschreibung noch nicht auditiert. Der nächste Bericht dokumentiert Datum, Browser, assistive Technologie, Aufgaben, Befunde, Korrekturen und verbleibende Einschränkungen.",
@@ -229,8 +227,6 @@ export const copy = {
     skip: "Lewati ke konten",
     navigation: "Navigasi utama",
     language: "Bahasa",
-    footer:
-      "Berkembang bersama pekerjaan saya. Bukti ditambahkan seiring pengembangan.",
     back: "Kembali ke proyek pilihan",
     context: "Konteks proyek",
     existing: "Implementasi yang tersedia",
@@ -238,7 +234,7 @@ export const copy = {
     decisions: "Keputusan yang perlu didokumentasikan",
     evidence: "Bukti dan keterbatasan",
     limitations:
-      "Tautan proyek dan deskripsi teknologi awal tersedia di bawah. Halaman ini tidak mengklaim hasil produksi, peningkatan kinerja, atau audit aksesibilitas lengkap.",
+      "Tautan proyek dan deskripsi teknologi awal tersedia di bagian atas halaman ini. Halaman ini tidak mengklaim hasil produksi, peningkatan kinerja, atau audit aksesibilitas lengkap.",
     audit: "Pengujian aksesibilitas",
     auditText:
       "Status: belum diaudit untuk studi kasus ini. Laporan berikutnya akan mencatat tanggal, browser, teknologi bantu, tugas, temuan, perbaikan, dan keterbatasan yang tersisa.",

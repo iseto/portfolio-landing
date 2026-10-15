@@ -24,9 +24,10 @@ export const accessibilityCopy = {
     baseline: "Recorded local verification",
     baselineText:
       "14 October 2026: keyboard skip navigation and locale switching tested; desktop and mobile layouts reviewed. Latest automated evidence is attached to each workflow run.",
+    securityVerification: "15 October 2026: local production-build tests passed for security headers, CSP compatibility, cache expiry, entry limits, query exclusion, clearing and offline use. These checks do not assess hosting configuration or replace a manual screen reader audit.",
     pwa: "Install & offline access",
     pwaText:
-      "Use your browser’s install option where available. Visited portfolio pages and their assets can be read offline. An uncached page shows a multilingual offline fallback. External projects require a connection. New versions activate after the previous tabs close; reconnect to refresh saved content.",
+      "Use your browser’s install option where available. Visited portfolio pages and their assets can be read offline. Saved entries expire after seven days; storage is limited to 40 entries of at most 2 MiB each. Expired data is removed when the service worker next runs, not while the browser is closed. The footer’s “Clear offline data” button removes the portfolio cache; subsequent visits can save pages again. An uncached or expired page shows the multilingual fallback if that fallback is still saved. External projects require a connection. New versions activate after the previous tabs close; reconnect to refresh saved content.",
   },
   de: {
     title: "Barrierefreiheit & Überprüfung",
@@ -52,9 +53,10 @@ export const accessibilityCopy = {
     baseline: "Dokumentierte lokale Prüfung",
     baselineText:
       "14. Oktober 2026: Sprunglink und Sprachwechsel getestet; Desktop- und mobile Layouts geprüft. Aktuelle automatische Nachweise liegen bei jedem Workflow-Lauf.",
+    securityVerification: "15. Oktober 2026: Lokale Tests des Produktionsbuilds für Sicherheitsheader, CSP-Kompatibilität, Cache-Ablauf, Eintragsgrenzen, Ausschluss von URLs mit Suchparametern, Löschen und Offline-Nutzung waren erfolgreich. Diese Tests prüfen keine Hosting-Konfiguration und ersetzen kein manuelles Screenreader-Audit.",
     pwa: "Installation & Offline-Nutzung",
     pwaText:
-      "Nutzen Sie die Installationsfunktion Ihres Browsers, sofern verfügbar. Besuchte Portfolioseiten und ihre Dateien können offline gelesen werden. Für nicht gespeicherte Seiten erscheint eine mehrsprachige Offline-Seite. Externe Projekte benötigen eine Verbindung. Neue Versionen werden nach dem Schließen alter Tabs aktiv; stellen Sie die Verbindung wieder her, um Inhalte zu aktualisieren.",
+      "Nutzen Sie die Installationsfunktion Ihres Browsers, sofern verfügbar. Besuchte Portfolioseiten und ihre Dateien können offline gelesen werden. Gespeicherte Einträge sind sieben Tage gültig; der Speicher ist auf 40 Einträge mit jeweils höchstens 2 MiB begrenzt. Abgelaufene Daten werden beim nächsten Ausführen des Service Workers gelöscht, nicht bei geschlossenem Browser. „Offline-Daten löschen“ im Footer entfernt den Portfolio-Cache; spätere Besuche können Seiten erneut speichern. Für nicht gespeicherte oder abgelaufene Seiten erscheint die mehrsprachige Offline-Seite, sofern diese noch gespeichert ist. Externe Projekte benötigen eine Verbindung. Neue Versionen werden nach dem Schließen alter Tabs aktiv; stellen Sie die Verbindung wieder her, um Inhalte zu aktualisieren.",
   },
   id: {
     title: "Aksesibilitas & verifikasi",
@@ -80,8 +82,9 @@ export const accessibilityCopy = {
     baseline: "Verifikasi lokal yang tercatat",
     baselineText:
       "14 Oktober 2026: tautan lompat dan pergantian bahasa diuji; tata letak desktop serta seluler ditinjau. Bukti otomatis terbaru dilampirkan pada setiap proses workflow.",
+    securityVerification: "15 Oktober 2026: pengujian build produksi lokal berhasil untuk header keamanan, kompatibilitas CSP, kedaluwarsa cache, batas entri, pengecualian URL dengan parameter kueri, penghapusan, dan akses luring. Pemeriksaan ini tidak menilai konfigurasi hosting atau menggantikan audit manual dengan pembaca layar.",
     pwa: "Instalasi & akses luring",
     pwaText:
-      "Gunakan opsi instalasi browser jika tersedia. Halaman portofolio yang telah dikunjungi beserta asetnya dapat dibaca tanpa koneksi. Halaman yang belum tersimpan menampilkan halaman luring multibahasa. Proyek eksternal memerlukan koneksi. Versi baru aktif setelah tab lama ditutup; hubungkan kembali untuk memperbarui konten tersimpan.",
+      "Gunakan opsi instalasi browser jika tersedia. Halaman portofolio yang telah dikunjungi beserta asetnya dapat dibaca tanpa koneksi. Entri tersimpan berlaku selama tujuh hari; penyimpanan dibatasi hingga 40 entri dengan ukuran maksimal 2 MiB per entri. Data kedaluwarsa dihapus saat service worker berjalan kembali, bukan saat browser ditutup. Tombol “Hapus data luring” di footer menghapus cache portofolio; kunjungan berikutnya dapat menyimpan halaman lagi. Halaman yang belum tersimpan atau kedaluwarsa menampilkan halaman luring multibahasa jika halaman cadangan tersebut masih tersimpan. Proyek eksternal memerlukan koneksi. Versi baru aktif setelah tab lama ditutup; hubungkan kembali untuk memperbarui konten tersimpan.",
   },
 } satisfies Record<Locale, Record<string, string>>;

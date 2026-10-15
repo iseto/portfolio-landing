@@ -1,6 +1,6 @@
 # Ignatius Seto — living portfolio
 
-Next.js, React and TypeScript portfolio with English (`/`), German (`/de`), and Bahasa Indonesia (`/id`) pages, localized case studies, a dated Now section, engineering notes, and a public Template Editor roadmap. Source and demo links remain in `data/projects.json`; localized copy and project context live in `data/portfolio.ts`.
+Next.js, React and TypeScript portfolio with English (`/`), German (`/de`), and Bahasa Indonesia (`/id`) pages, localized case studies, a dated Now section, engineering notes, and a public Template Editor roadmap. Source and demo links remain in `data/projects.json`; localized copy and project context live in `data/portfolio.ts`; dated engineering notes are assembled in `data/notes.ts`.
 
 ## Local development
 
@@ -44,3 +44,10 @@ The dead Blog link was removed from navigation; GitHub and LinkedIn remain. The 
 The portfolio has an install manifest and production-only service worker. Visited same-origin pages/assets are cached; uncached offline routes show a multilingual fallback. External demos are not cached. No automatic install prompt, notifications or background API work. Bump the service-worker cache version when changing offline behavior; new workers wait for old tabs to close. Browser installation availability depends on platform and HTTPS (localhost is supported).
 
 This change edits only the portfolio repository; linked app source repositories were inspected and screenshotted without modifying their source.
+
+## Security and offline controls
+
+See [security notes and local test steps](docs/SECURITY.md) for security headers,
+seven-day offline cache expiry, storage limits, the localized clear-data button,
+and the remaining development dependency advisory. `npm run security:audit` checks
+production dependencies and runs in CI; `npm run security:audit:all` includes tooling.
