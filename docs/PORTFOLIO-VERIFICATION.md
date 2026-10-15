@@ -22,3 +22,9 @@ Next.js and eslint-config-next were aligned at 16.4.0. Existing Blog and baselin
 Added Bahasa Indonesia on every portfolio page, fixed the language separator alignment and 44px language targets, and fixed German reflow under custom text spacing. Added the public localized accessibility report, expanded downloadable audit template, weekly evidence workflow with always-retained reports, and an install manifest plus offline behavior for visited pages.
 
 Captured real screenshots from existing local app previews, without editing the apps. Captions distinguish local development versions from deployed demos. The modernized Weather repository returned public HTTP 404; the public earlier-source link is retained and explicitly labeled. The dead Blog link is removed. LinkedIn's HTTP 999 remains a manual-review requirement.
+
+## Atmos link correction — 15 October 2026
+
+The weather entry still linked to the earlier `iseto/react-weather-app` repository and GitHub Pages demo. Vercel's production project confirms Atmos is deployed at `https://react-typescript-weather-app-one.vercel.app`; the similarly named address without `-one` serves the old Create React App build. Updated the shared project record and all three localized descriptions to match Atmos. The current source is `iseto/react-typescript-weather-app`, which is private (anonymous requests return 404), so the public pages display a localized private-repository label instead of a broken source link. Repository visibility is unchanged.
+
+Validation: portfolio lint, TypeScript and production build passed; browser suite passed 81 checks with the expected mobile keyboard skip. Atmos lint, 15 unit tests, production build and all 16 desktop/mobile browser tests passed. The Atmos production deployment was refreshed from its existing committed revision `c316205`.

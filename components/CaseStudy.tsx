@@ -28,15 +28,19 @@ export default function CaseStudy({
           <a className="button primary" href={project.url}>
             {t.demo}
           </a>
-          <a className="button" href={project.repo}>
-            {project.slug === "weather"
-              ? locale === "de"
-                ? "Früherer Quellcode"
+          {project.sourcePrivate ? (
+            <span>
+              {locale === "de"
+                ? "Quellcode (privates Repository)"
                 : locale === "id"
-                  ? "Kode versi sebelumnya"
-                  : "Earlier version source"
-              : t.source}
-          </a>
+                  ? "Kode sumber (repositori privat)"
+                  : "Source code (private repository)"}
+            </span>
+          ) : (
+            <a className="button" href={project.repo}>
+              {t.source}
+            </a>
+          )}
         </div>
       </header>
       <figure className="case-screenshot">

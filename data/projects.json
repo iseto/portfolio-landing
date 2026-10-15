@@ -12,9 +12,10 @@
     "repo": "https://github.com/iseto/wc-cineflix"
   },
   {
-    "title": "Atmos \u2014 Weather App",
-    "description": "Weather app using OpenWeather API and React.",
-    "url": "https://iseto.github.io/react-weather-app",
-    "repo": "https://github.com/iseto/react-weather-app"
+    "title": "Atmos — Weather App",
+    "description": "Atmos weather dashboard built with React, TypeScript, and Open-Meteo.",
+    "url": "https://react-typescript-weather-app-one.vercel.app",
+    "repo": "https://github.com/iseto/react-typescript-weather-app",
+    "sourcePrivate": true
   }
 ]

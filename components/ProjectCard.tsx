@@ -53,16 +53,20 @@ export default function ProjectCard({
             {t.demo}
             <span className="sr-only">: {project.title}</span>
           </a>
-          <a href={project.repo}>
-            {project.slug === "weather"
-              ? locale === "de"
-                ? "Früherer Quellcode"
+          {project.sourcePrivate ? (
+            <span>
+              {locale === "de"
+                ? "Quellcode (privates Repository)"
                 : locale === "id"
-                  ? "Kode versi sebelumnya"
-                  : "Earlier version source"
-              : t.source}
-            <span className="sr-only">: {project.title}</span>
-          </a>
+                  ? "Kode sumber (repositori privat)"
+                  : "Source code (private repository)"}
+            </span>
+          ) : (
+            <a href={project.repo}>
+              {t.source}
+              <span className="sr-only">: {project.title}</span>
+            </a>
+          )}
         </div>
       </div>
     </article>

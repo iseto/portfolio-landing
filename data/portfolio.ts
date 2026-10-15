@@ -297,7 +297,7 @@ const details = [
     stack: ["React", "TypeScript", "Open-Meteo", "PWA"],
     en: {
       description:
-        "The local Atmos preview uses React, TypeScript, and Open-Meteo. The linked deployed demo is the earlier weather app.",
+        "Atmos is a responsive weather dashboard built with React, TypeScript, and Open-Meteo, with forecasts, city search, and offline support.",
       context: "A weather interface backed by an external data provider.",
       planned:
         "Document responsive behavior and explore clear feedback for unavailable or stale weather data. Measure before making performance claims.",
@@ -306,7 +306,7 @@ const details = [
     },
     de: {
       description:
-        "Die lokale Atmos-Vorschau nutzt React, TypeScript und Open-Meteo. Die verlinkte Demo zeigt die frühere Wetter-App.",
+        "Atmos ist ein responsives Wetter-Dashboard mit React, TypeScript und Open-Meteo, mit Vorhersagen, Städtesuche und Offline-Unterstützung.",
       context: "Eine Wetteroberfläche mit Daten eines externen Anbieters.",
       planned:
         "Responsives Verhalten dokumentieren und verständliche Rückmeldungen für fehlende oder veraltete Wetterdaten entwickeln. Vor Leistungsaussagen zuerst messen.",
@@ -336,7 +336,7 @@ const indonesianDetails = [
   },
   {
     description:
-      "Pratinjau Atmos lokal menggunakan React, TypeScript, dan Open-Meteo. Demo daring yang ditautkan adalah versi aplikasi cuaca sebelumnya.",
+      "Atmos adalah dasbor cuaca responsif dengan React, TypeScript, dan Open-Meteo, dilengkapi prakiraan, pencarian kota, dan dukungan luring.",
     context:
       "Antarmuka prakiraan cuaca yang menggunakan layanan data eksternal.",
     planned:
