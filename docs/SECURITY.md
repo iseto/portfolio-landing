@@ -77,6 +77,32 @@ framework downgrade was applied. Recheck when upstream publishes a fix. Existing
 Dependabot updates and scheduled CI remain enabled; production audit failures
 now fail CI. The full tooling audit remains an explicit separate check.
 
+### Automated maintenance (20 October 2026)
+
+- Dependabot version updates run weekly on Mondays at 06:00 Europe/Berlin for npm
+  and GitHub Actions. Updates remain pull requests requiring review and CI.
+- The repository dependency graph, Dependabot alerts, and Dependabot security
+  updates were enabled and verified in GitHub settings. Security updates respond
+  to advisories without waiting for the weekly version-update schedule.
+- `.github/workflows/security.yml` runs a lockfile-based full audit daily at
+  06:23 UTC, including development dependencies, without installing or executing
+  dependency lifecycle scripts. Manual runs use the default branch only.
+- New findings, changed advisory/severity/range information, or changed fix
+  availability fail the daily job. Resolved and unchanged findings are recorded
+  in the job summary; unchanged findings do not repeatedly fail it. This is a
+  notification comparison, not an acceptance or suppression of vulnerabilities.
+- The first run establishes a baseline and flags any existing findings. The
+  latest completed audit is stored in an Actions cache; cache eviction can cause
+  existing findings to be flagged again. Registry/invalid-report errors fail the
+  job without replacing the baseline. JSON and Markdown evidence lasts 30 days.
+- GitHub notification delivery follows each user's Actions notification settings.
+  The production-only audit continues to block PR CI on every run independently.
+
+For a local report, run `npm audit --include=dev --json > reports/security-audit.json`
+after creating `reports/`, then `node scripts/security-audit-summary.mjs`. npm exits
+nonzero when findings exist; the summary script still needs to run against that
+valid report. It updates the local ignored baseline under `reports/`.
+
 ## Test locally before committing
 
 Use the production server to exercise the service worker:

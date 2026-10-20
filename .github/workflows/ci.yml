@@ -19,6 +19,7 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - run: node --test scripts/security-audit-summary.test.mjs
       - run: npm run security:audit
       - run: npm run lint
       - run: npm run type-check
