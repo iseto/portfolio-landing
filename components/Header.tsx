@@ -1,3 +1,4 @@
+import AppearanceControls from "./AppearanceControls";
 import LanguageSwitch from "./LanguageSwitch";
 import { copy, pathFor, type Locale } from "@/data/portfolio";
 export default function Header({ locale }: { locale: Locale }) {
@@ -16,6 +17,7 @@ export default function Header({ locale }: { locale: Locale }) {
           ))}
         </nav>
         <LanguageSwitch locale={locale} />
+        <AppearanceControls locale={locale} />
       </div>
     </header>
   );

@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-head-element -- App Router root layouts own the document head. */
+import { appearanceBootstrap } from "@/lib/appearance";
 import PWARegistration from "./PWARegistration";
 import type { Metadata } from "next";
 import Header from "./Header";
@@ -30,7 +32,12 @@ export default function PortfolioLayout({
   locale: Locale;
 }) {
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{ __html: appearanceBootstrap("portfolio") }}
+        />
+      </head>
       <body>
         <a className="skip-link" href="#main">
           {copy[locale].skip}

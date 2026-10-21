@@ -57,3 +57,7 @@ production dependencies and runs in CI; `npm run security:audit:all` includes to
 ## Automatic project updates
 
 The hourly **Sync portfolio projects** workflow reads all three public project repositories. It validates each `portfolio.json`, verifies the repository and demo URLs, and records the latest default-branch source commit date. If anything fails, it leaves the landing data unchanged. When data changes, lint, type checks, a production build, browser regression tests and rendered link checks must pass before it opens and automatically merges a PR containing only `data/projects.json`. The required regression check also runs on that PR branch; branch protection stays in place. The existing Vercel Git integration handles deployment. No additional cross-repository token is needed. See [the synchronization guide](docs/PROJECT-SYNC.md).
+
+## Appearance
+
+The localized header offers System/Light/Dark themes and independent System/Standard/More contrast preferences. Settings persist locally per site and respect system forced colors. See [appearance behavior and verification](docs/APPEARANCE.md).
