@@ -4,16 +4,50 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  deployment_status:
   workflow_dispatch:
   schedule:
     - cron: "0 8 * * 1"
 permissions:
   contents: read
 jobs:
+  resolve-sync:
+    if: >-
+      github.event_name == 'deployment_status' &&
+      github.event.deployment_status.state == 'success' &&
+      github.event.deployment_status.creator.login == 'vercel[bot]' &&
+      github.event.deployment.environment == 'Preview'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    outputs:
+      eligible: ${{ steps.resolve.outputs.eligible }}
+    steps:
+      - name: Match the deployed revision to an owned sync pull request
+        id: resolve
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          DEPLOY_SHA: ${{ github.event.deployment.sha }}
+        run: |
+          branch="$(gh api --paginate "repos/$GH_REPO/pulls?state=open&per_page=100" |
+            jq -r --arg sha "$DEPLOY_SHA" --arg repo "$GH_REPO" '.[] | select(.head.sha == $sha and .head.repo.full_name == $repo and (.head.ref | startswith("codex/portfolio-sync-"))) | .head.ref' | head -n 1)"
+          if [ -n "$branch" ]; then
+            echo 'eligible=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'eligible=false' >> "$GITHUB_OUTPUT"
+          fi
   regression:
+    needs: resolve-sync
+    # An unrelated deployment must never emit a skipped check named regression.
+    name: ${{ (github.event_name != 'deployment_status' || needs.resolve-sync.outputs.eligible == 'true') && 'regression' || 'ignored-deployment' }}
+    if: ${{ always() && (github.event_name != 'deployment_status' || needs.resolve-sync.outputs.eligible == 'true') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.deployment.sha || github.sha }}
       - uses: actions/setup-node@v4
         with:
           node-version: 22

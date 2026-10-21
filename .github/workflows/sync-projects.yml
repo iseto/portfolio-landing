@@ -71,17 +71,26 @@ jobs:
           git push origin "$branch"
           head_sha="$(git rev-parse HEAD)"
           pr_url="$(gh pr create --base main --head "$branch" --title 'Sync verified portfolio project listings' --body 'Refresh localized project listings, demo URLs, source availability and default-branch update dates. Manifest validation, local production link checks and browser regression checks passed before creating this PR. The required regression workflow must pass before automatic merge.')"
-          # Explicit dispatch works with GITHUB_TOKEN; push-triggered Actions do not.
-          gh workflow run ci.yml --ref "$branch"
+          # GitHub excludes workflow_dispatch checks from branch-rule evaluation.
+          # Vercel's trusted deployment_status event runs the required regression check.
           run_id=""
-          for attempt in $(seq 1 30); do
-            run_id="$(gh api "repos/$GH_REPO/actions/workflows/ci.yml/runs?branch=$branch&event=workflow_dispatch&head_sha=$head_sha" --jq '.workflow_runs[0].id // empty')"
+          for attempt in $(seq 1 90); do
+            candidates="$(gh api "repos/$GH_REPO/actions/workflows/ci.yml/runs?event=deployment_status&head_sha=$head_sha&per_page=10" --jq '.workflow_runs[].id')"
+            for candidate in $candidates; do
+              check_job="$(gh api "repos/$GH_REPO/actions/runs/$candidate/jobs" --jq '.jobs[] | select(.name == "regression") | .id')"
+              if [ -n "$check_job" ]; then run_id="$candidate"; break; fi
+            done
             if [ -n "$run_id" ]; then break; fi
             sleep 5
           done
           test -n "$run_id"
           gh run watch "$run_id" --exit-status --interval 15
-          gh pr merge "$pr_url" --squash --match-head-commit "$head_sha" --delete-branch
+          # Allow check-result propagation; every attempt still enforces branch rules.
+          for attempt in $(seq 1 12); do
+            if gh pr merge "$pr_url" --squash --match-head-commit "$head_sha" --delete-branch; then exit 0; fi
+            sleep 5
+          done
+          exit 1
       - uses: actions/upload-artifact@v4
         if: always()
         with:
