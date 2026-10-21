@@ -2,6 +2,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import {
   copy,
+  dateLabel,
   pathFor,
   portfolioProjects,
   type Locale,
@@ -23,6 +24,10 @@ export default function CaseStudy({
       <header className="case-header">
         <p className="eyebrow">{t.status}</p>
         <h1>{project.title}</h1>
+        <p>
+          {locale === "de" ? "Quellcode aktualisiert" : locale === "id" ? "Kode diperbarui" : "Source updated"}{" "}
+          <time dateTime={project.sourceUpdated}>{dateLabel(locale, project.sourceUpdated)}</time>
+        </p>
         <p className="hero-copy">{detail.description}</p>
         <div className="actions">
           <a className="button primary" href={project.url}>

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import {
   copy,
+  dateLabel,
   pathFor,
   portfolioProjects,
   type Locale,
@@ -26,6 +27,10 @@ export default function ProjectCard({
       <div className="project-body">
         <p className="eyebrow">{t.status}</p>
         <h3>{project.title}</h3>
+        <p>
+          {locale === "de" ? "Quellcode aktualisiert" : locale === "id" ? "Kode diperbarui" : "Source updated"}{" "}
+          <time dateTime={project.sourceUpdated}>{dateLabel(locale, project.sourceUpdated)}</time>
+        </p>
         <p>{project[locale].description}</p>
         <ul
           className="tags"

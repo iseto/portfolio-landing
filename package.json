@@ -12,7 +12,9 @@
     "test:ui": "playwright test --ui",
     "check:links": "node scripts/check-links.mjs",
     "security:audit": "npm audit --omit=dev --audit-level=high",
-    "security:audit:all": "npm audit"
+    "security:audit:all": "npm audit",
+    "sync:projects": "node scripts/sync-projects.mjs",
+    "test:maintenance": "node --test scripts/*.test.mjs"
   },
   "dependencies": {
     "next": "^16.4.1",

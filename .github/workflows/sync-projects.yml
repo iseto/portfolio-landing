@@ -1,0 +1,93 @@
+name: Sync portfolio projects
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+  pull-requests: write
+  actions: write
+concurrency:
+  group: portfolio-project-sync
+  cancel-in-progress: false
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run test:maintenance
+      - name: Fetch and verify project listings
+        run: npm run sync:projects
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+      - name: Detect changes
+        id: changes
+        run: |
+          if git diff --quiet -- data/projects.json; then
+            echo 'changed=false' >> "$GITHUB_OUTPUT"
+          else
+            echo 'changed=true' >> "$GITHUB_OUTPUT"
+          fi
+      - if: steps.changes.outputs.changed == 'true'
+        run: npm run lint && npm run type-check && npm run build
+      - if: steps.changes.outputs.changed == 'true'
+        run: npx playwright install --with-deps chromium
+      - if: steps.changes.outputs.changed == 'true'
+        run: npm test
+      - name: Verify rendered links before publishing
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          npm run start -- --hostname 127.0.0.1 --port 4174 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          for attempt in $(seq 1 30); do
+            if curl --silent --fail http://127.0.0.1:4174/ > /dev/null; then break; fi
+            sleep 1
+          done
+          npm run check:links
+        env:
+          CHECK_BASE_URL: http://127.0.0.1:4174
+      - name: Publish through the protected branch
+        if: steps.changes.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          branch="codex/portfolio-sync-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          git config user.name "$(git log -1 --format=%an)"
+          git config user.email "$(git log -1 --format=%ae)"
+          git switch -c "$branch"
+          git add data/projects.json
+          git commit -m "chore: sync verified portfolio project listings"
+          git push origin "$branch"
+          head_sha="$(git rev-parse HEAD)"
+          pr_url="$(gh pr create --base main --head "$branch" --title 'Sync verified portfolio project listings' --body 'Refresh localized project listings, demo URLs, source availability and default-branch update dates. Manifest validation, local production link checks and browser regression checks passed before creating this PR. The required regression workflow must pass before automatic merge.')"
+          # Explicit dispatch works with GITHUB_TOKEN; push-triggered Actions do not.
+          gh workflow run ci.yml --ref "$branch"
+          run_id=""
+          for attempt in $(seq 1 30); do
+            run_id="$(gh api "repos/$GH_REPO/actions/workflows/ci.yml/runs?branch=$branch&event=workflow_dispatch&head_sha=$head_sha" --jq '.workflow_runs[0].id // empty')"
+            if [ -n "$run_id" ]; then break; fi
+            sleep 5
+          done
+          test -n "$run_id"
+          gh run watch "$run_id" --exit-status --interval 15
+          gh pr merge "$pr_url" --squash --match-head-commit "$head_sha" --delete-branch
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: project-sync-reports
+          path: |
+            reports/
+            playwright-report/
+            test-results/
+          retention-days: 30

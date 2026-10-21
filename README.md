@@ -26,11 +26,11 @@ Browser tests start the production server after building. They cover all three l
 
 CI runs lint, TypeScript, build and browser regression checks on main pushes, PRs, and weekly schedules. Dependabot proposes weekly npm and GitHub Actions updates on Mondays at 06:00 Europe/Berlin; it does not merge them automatically. Dependabot alerts and security updates were enabled in repository settings on 20 October 2026, along with the required dependency graph. Security fix PRs are triggered by advisories independently of the weekly version-update schedule.
 
-A daily 06:23 UTC workflow audits production and development dependencies from the lockfile. It saves JSON and Markdown reports for 30 days and fails on new/changed findings (including newly available fixes) or audit errors. Unchanged findings remain visible in the summary without repeated failures. A cached baseline tracks the previous completed audit; the first run or cache eviction can report existing findings again. The production audit in PR CI remains a separate blocking check. A separate Monday 07:00 UTC workflow checks external links, with bounded requests and a retry. Authentication/bot/rate-limit responses require manual review; other unsuccessful responses or repeated network failures fail the check. JSON reports are retained as workflow artifacts. Manual workflow dispatch is available. GitHub schedules become active on the default branch; notifications follow GitHub account settings.
+A daily 06:23 UTC workflow audits production and development dependencies from the lockfile. It saves JSON and Markdown reports for 30 days and fails on new/changed findings (including newly available fixes) or audit errors. Unchanged findings remain visible in the summary without repeated failures. A cached baseline tracks the previous completed audit; the first run or cache eviction can report existing findings again. The production audit in PR CI remains a separate blocking check. A separate daily 07:00 UTC workflow checks external links, with bounded requests and a retry. Authentication/bot/rate-limit responses require manual review; other unsuccessful responses or repeated network failures fail the check. JSON reports are retained as workflow artifacts. Manual workflow dispatch is available. GitHub schedules become active on the default branch; notifications follow GitHub account settings.
 
 ## Content maintenance
 
-- Update project URLs in `data/projects.json` and localized descriptions in `data/portfolio.ts`.
+- Update `portfolio.json` in the relevant project repository for titles, technology tags, and English/German/Indonesian descriptions. Set the repository website to the deployed demo URL. The hourly sync updates `data/projects.json`; case-study context and plans remain in `data/portfolio.ts`.
 - Keep all three languages synchronized. Language links preserve the current case study.
 - Real screenshots in `public/screenshots/` show local development versions captured on 14 October 2026. The deployed app demos may differ. Recapture them after UI updates; do not imply the screenshots establish accessibility.
 - Change `reviewed` only after reviewing Now. Add dated note records separately when future notes are published; do not rewrite the historical first note date.
@@ -45,7 +45,7 @@ The dead Blog link was removed from navigation; GitHub and LinkedIn remain. The 
 
 The portfolio has an install manifest and production-only service worker. Visited same-origin pages/assets are cached; uncached offline routes show a multilingual fallback. External demos are not cached. No automatic install prompt, notifications or background API work. Bump the service-worker cache version when changing offline behavior; new workers wait for old tabs to close. Browser installation availability depends on platform and HTTPS (localhost is supported).
 
-This change edits only the portfolio repository; linked app source repositories were inspected and screenshotted without modifying their source.
+Each linked app repository now provides a versioned `portfolio.json` listing. See [project synchronization](docs/PROJECT-SYNC.md) for publishing behavior and limitations.
 
 ## Security and offline controls
 
@@ -53,3 +53,7 @@ See [security notes and local test steps](docs/SECURITY.md) for security headers
 seven-day offline cache expiry, storage limits, the localized clear-data button,
 and the remaining development dependency advisory. `npm run security:audit` checks
 production dependencies and runs in CI; `npm run security:audit:all` includes tooling.
+
+## Automatic project updates
+
+The hourly **Sync portfolio projects** workflow reads all three public project repositories. It validates each `portfolio.json`, verifies the repository and demo URLs, and records the latest default-branch source commit date. If anything fails, it leaves the landing data unchanged. When data changes, lint, type checks, a production build, browser regression tests and rendered link checks must pass before it opens and automatically merges a PR containing only `data/projects.json`. The required regression check also runs on that PR branch; branch protection stays in place. The existing Vercel Git integration handles deployment. No additional cross-repository token is needed. See [the synchronization guide](docs/PROJECT-SYNC.md).
