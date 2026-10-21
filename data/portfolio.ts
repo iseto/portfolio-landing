@@ -251,7 +251,7 @@ const details = [
       description:
         "A dynamic template editor built with React, TypeScript, and Vite.",
       context:
-        "A project centered on editing templates. The next case study will document the actual user workflow and implementation boundaries.",
+        "A browser-local document workspace with a self-hosted HugeRTE editor, template variables, preview modes, and HTML export. Drafts stay in the current browser; export is needed to keep a copy elsewhere.",
       planned:
         "Document editing and preview behavior, then improve validation, keyboard access, and recovery from errors. Add AI-assisted drafts only after the baseline is tested.",
       decisions:
@@ -261,7 +261,7 @@ const details = [
       description:
         "Ein dynamischer Vorlageneditor mit React, TypeScript und Vite.",
       context:
-        "Ein Projekt rund um das Bearbeiten von Vorlagen. Die nächste Projektbeschreibung dokumentiert den tatsächlichen Nutzerablauf und die Grenzen der Umsetzung.",
+        "Ein lokaler Dokumenten-Workspace mit selbst gehostetem HugeRTE-Editor, Vorlagenvariablen, Vorschau und HTML-Export. Entwürfe bleiben im aktuellen Browser; für eine externe Kopie ist ein Export nötig.",
       planned:
         "Bearbeitung und Vorschau dokumentieren, danach Validierung, Tastaturbedienung und Fehlerbehandlung verbessern. KI-Entwürfe erst nach Tests des Ist-Zustands ergänzen.",
       decisions:
@@ -319,7 +319,7 @@ const indonesianDetails = [
   {
     description: "Editor templat dinamis dengan React, TypeScript, dan Vite.",
     context:
-      "Proyek untuk menyunting templat. Studi kasus berikutnya akan mendokumentasikan alur pengguna dan batas implementasi yang sebenarnya.",
+      "Ruang kerja dokumen lokal dengan editor HugeRTE yang dihosting sendiri, variabel templat, pratinjau, dan ekspor HTML. Draf tersimpan di browser saat ini; ekspor diperlukan untuk menyimpan salinan di tempat lain.",
     planned:
       "Dokumentasikan penyuntingan dan pratinjau, lalu tingkatkan validasi, akses keyboard, dan pemulihan dari kesalahan. Tambahkan draf AI setelah kondisi awal diuji.",
     decisions:
@@ -348,5 +348,8 @@ const indonesianDetails = [
 export const portfolioProjects = projects.map((project, index) => ({
   ...project,
   ...details[index],
-  id: indonesianDetails[index],
+  stack: project.stack,
+  en: { ...details[index].en, description: project.descriptions.en },
+  de: { ...details[index].de, description: project.descriptions.de },
+  id: { ...indonesianDetails[index], description: project.descriptions.id },
 }));

@@ -1,21 +1,59 @@
 [
   {
     "title": "Template Studio",
-    "description": "Dynamic template editor built with React, TypeScript, and Vite.",
+    "description": "A document workspace with rich-text editing, template variables, desktop/mobile previews, browser-local drafts, and sanitized HTML export.",
     "url": "https://dynamischer-template-editor.vercel.app",
-    "repo": "https://github.com/iseto/dynamischer-template-editor"
+    "repo": "https://github.com/iseto/dynamischer-template-editor",
+    "stack": [
+      "React",
+      "TypeScript",
+      "Vite",
+      "HugeRTE"
+    ],
+    "descriptions": {
+      "en": "A document workspace with rich-text editing, template variables, desktop/mobile previews, browser-local drafts, and sanitized HTML export.",
+      "de": "Ein Dokumenten-Workspace mit Rich-Text-Editor, Vorlagenvariablen, Desktop-/Mobilvorschau, lokalen Entwürfen und bereinigtem HTML-Export.",
+      "id": "Ruang kerja dokumen dengan editor rich text, variabel templat, pratinjau desktop/seluler, draf lokal browser, dan ekspor HTML tersanitasi."
+    },
+    "sourcePrivate": false,
+    "sourceUpdated": "2026-10-21"
   },
   {
     "title": "Cineflix Web Component",
-    "description": "Movie finder web component built with StencilJS and TheMovieDB API.",
+    "description": "A film discovery app with a curated collection, live TMDB title search, genre filters, sorting, a saved watchlist, and film details.",
     "url": "https://wc-cineflix.vercel.app",
-    "repo": "https://github.com/iseto/wc-cineflix"
+    "repo": "https://github.com/iseto/wc-cineflix",
+    "stack": [
+      "StencilJS",
+      "TypeScript",
+      "Web Components",
+      "TMDB API"
+    ],
+    "descriptions": {
+      "en": "A film discovery app with a curated collection, live TMDB title search, genre filters, sorting, a saved watchlist, and film details.",
+      "de": "Eine Film-App mit kuratierter Sammlung, Live-Titelsuche über TMDB, Genrefiltern, Sortierung, gespeicherter Merkliste und Filmdetails.",
+      "id": "Aplikasi penemuan film dengan koleksi kurasi, pencarian judul langsung melalui TMDB, filter genre, pengurutan, daftar tontonan tersimpan, dan detail film."
+    },
+    "sourcePrivate": false,
+    "sourceUpdated": "2026-10-21"
   },
   {
     "title": "Atmos — Weather App",
-    "description": "Atmos weather dashboard built with React, TypeScript, and Open-Meteo.",
+    "description": "A weather dashboard with city-local forecasts, city search, saved places, temperature units, light/dark themes, share links, and timestamped offline forecasts.",
     "url": "https://react-typescript-weather-app-one.vercel.app",
     "repo": "https://github.com/iseto/react-typescript-weather-app",
-    "sourcePrivate": true
+    "sourcePrivate": false,
+    "stack": [
+      "React",
+      "TypeScript",
+      "Open-Meteo",
+      "PWA"
+    ],
+    "descriptions": {
+      "en": "A weather dashboard with city-local forecasts, city search, saved places, temperature units, light/dark themes, share links, and timestamped offline forecasts.",
+      "de": "Ein Wetter-Dashboard mit ortsbezogenen Vorhersagen, Städtesuche, gespeicherten Orten, Temperatureinheiten, hellem/dunklem Design, teilbaren Links und Offline-Vorhersagen mit Zeitstempel.",
+      "id": "Dasbor cuaca dengan prakiraan waktu setempat, pencarian kota, tempat tersimpan, satuan suhu, tema terang/gelap, tautan berbagi, dan prakiraan luring bertanda waktu."
+    },
+    "sourceUpdated": "2026-10-21"
   }
 ]

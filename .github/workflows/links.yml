@@ -1,7 +1,7 @@
-name: Weekly portfolio link health
+name: Daily portfolio link health
 on:
   schedule:
-    - cron: "0 7 * * 1"
+    - cron: "0 7 * * *"
   workflow_dispatch:
 permissions:
   contents: read
