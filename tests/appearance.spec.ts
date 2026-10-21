@@ -79,6 +79,12 @@ for (const theme of ["light", "dark"])
           .withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"])
           .analyze();
         expect(result.violations).toEqual([]);
+        if (contrast === "more") {
+          const enhanced = await new AxeBuilder({ page })
+            .withRules(["color-contrast-enhanced"])
+            .analyze();
+          expect(enhanced.violations).toEqual([]);
+        }
         await page.setViewportSize({ width: 320, height: 900 });
         expect(
           await page.evaluate(
