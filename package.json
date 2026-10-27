@@ -30,10 +30,10 @@
     "@types/react-dom": "^19",
     "autoprefixer": "^10.4.21",
     "baseline-browser-mapping": "^2.11.31",
-    "eslint": "^10",
+    "eslint": "^9.39.5",
     "eslint-config-next": "^16.4.2",
     "postcss": "^8.5.31",
     "tailwindcss": "^4.1.16",
-    "typescript": "^7"
+    "typescript": "~5.9.3"
   }
 }
