@@ -16,7 +16,7 @@
       "id": "Ruang kerja dokumen dengan editor rich text, variabel templat, pratinjau desktop/seluler, draf lokal browser, dan ekspor HTML tersanitasi. Dengan tema sistem, terang/gelap, dan kontras lebih tinggi."
     },
     "sourcePrivate": false,
-    "sourceUpdated": "2026-10-21"
+    "sourceUpdated": "2026-10-27"
   },
   {
     "title": "Cineflix Web Component",
@@ -54,6 +54,6 @@
       "de": "Ein Wetter-Dashboard mit ortsbezogenen Vorhersagen, Städtesuche, gespeicherten Orten, Temperatureinheiten, teilbaren Links, Offline-Vorhersagen mit Zeitstempel, hellem/dunklem Design und erhöhtem Kontrast.",
       "id": "Dasbor cuaca dengan prakiraan waktu setempat, pencarian kota, tempat tersimpan, satuan suhu, tautan berbagi, prakiraan luring bertanda waktu, tema terang/gelap, dan kontras lebih tinggi."
     },
-    "sourceUpdated": "2026-10-24"
+    "sourceUpdated": "2026-10-27"
   }
 ]
