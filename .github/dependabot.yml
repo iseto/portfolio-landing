@@ -8,6 +8,13 @@ updates:
       time: "06:00"
       timezone: Europe/Berlin
     open-pull-requests-limit: 3
+    # typescript-eslint currently requires TypeScript <6.1; revisit with parser support.
+    ignore:
+      - dependency-name: typescript
+        versions: ["7.x"]
+      # eslint-config-next's React, import, and accessibility plugins support ESLint 9.
+      - dependency-name: eslint
+        versions: ["10.x"]
     groups:
       framework:
         patterns:
