@@ -16,7 +16,7 @@
       "id": "Ruang kerja dokumen dengan editor rich text, variabel templat, pratinjau desktop/seluler, draf lokal browser, dan ekspor HTML tersanitasi. Dengan tema sistem, terang/gelap, dan kontras lebih tinggi."
     },
     "sourcePrivate": false,
-    "sourceUpdated": "2026-10-27"
+    "sourceUpdated": "2026-11-24"
   },
   {
     "title": "Cineflix Web Component",
@@ -35,7 +35,7 @@
       "id": "Aplikasi penemuan film dengan koleksi kurasi, pencarian judul langsung melalui TMDB, filter genre, pengurutan, daftar tontonan tersimpan, dan detail film. Dengan tema sistem, terang/gelap, dan kontras lebih tinggi."
     },
     "sourcePrivate": false,
-    "sourceUpdated": "2026-10-21"
+    "sourceUpdated": "2026-11-24"
   },
   {
     "title": "Atmos — Weather App",
@@ -54,6 +54,6 @@
       "de": "Ein Wetter-Dashboard mit ortsbezogenen Vorhersagen, Städtesuche, gespeicherten Orten, Temperatureinheiten, teilbaren Links, Offline-Vorhersagen mit Zeitstempel, hellem/dunklem Design und erhöhtem Kontrast.",
       "id": "Dasbor cuaca dengan prakiraan waktu setempat, pencarian kota, tempat tersimpan, satuan suhu, tautan berbagi, prakiraan luring bertanda waktu, tema terang/gelap, dan kontras lebih tinggi."
     },
-    "sourceUpdated": "2026-10-27"
+    "sourceUpdated": "2026-11-24"
   }
 ]
